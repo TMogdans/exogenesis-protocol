@@ -13,18 +13,12 @@ var _can_shoot: bool = true
 
 func _ready() -> void:
 	slots = [
-		Bounce.new(),
-		DamageIncrease.new(),
-		Rapid.new(),
-		Rapid.new(),
-		DamageIncrease.new(),
-		Bullet.new(),
-		DamageIncrease.new(),
+		Split.new(),
 		Bullet.new()
 	]
 	cooldownTimer.wait_time = cooldown
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	get_input()
 	
 func get_input():
