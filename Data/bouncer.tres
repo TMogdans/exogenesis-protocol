@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Modification" load_steps=2 format=3 uid="uid://dqx8l70656q2j"]
+
+[ext_resource type="Script" path="res://Models/Modification.gd" id="1_0fnc2"]
+
+[resource]
+script = ExtResource("1_0fnc2")
+can_bounce = true
+add_damage = 0

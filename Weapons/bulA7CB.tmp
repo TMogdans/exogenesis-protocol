@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://drf4big5urlmc"]
+
+[ext_resource type="Script" path="res://Weapons/bullet_01.gd" id="1_k00ha"]
+[ext_resource type="Texture2D" uid="uid://5ykao6wntmvl" path="res://Weapons/bullet.png" id="1_mwdpi"]
+[ext_resource type="Resource" uid="uid://evfcbowmto6" path="res://Data/bullet.tres" id="2_pwd6y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_orwvq"]
+radius = 9.0
+
+[node name="Bullet01" type="CharacterBody2D"]
+script = ExtResource("1_k00ha")
+projectile = ExtResource("2_pwd6y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_mwdpi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_orwvq")

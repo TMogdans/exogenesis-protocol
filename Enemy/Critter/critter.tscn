@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://snrxqrlwihbj"]
+
+[ext_resource type="Script" path="res://Enemy/Critter/critter.gd" id="1_h0yqv"]
+[ext_resource type="Resource" uid="uid://bc5pjt61n34ph" path="res://Data/critter.tres" id="2_1x60j"]
+[ext_resource type="Texture2D" uid="uid://cc1btsvnrvvlt" path="res://Enemy/Critter/critter.png" id="3_b8q04"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rn0tk"]
+size = Vector2(32, 32)
+
+[node name="Critter" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_h0yqv")
+enemy_type = ExtResource("2_1x60j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_b8q04")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rn0tk")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

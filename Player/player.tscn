@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://cj7jb7sgk7vrm"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_guadj"]
+[ext_resource type="Texture2D" uid="uid://bar7hxkxjjlts" path="res://icon.svg" id="2_b08m3"]
+[ext_resource type="Texture2D" uid="uid://dr1e6syd2m1s4" path="res://Player/hand_dot.png" id="3_7icss"]
+[ext_resource type="Script" path="res://Weapons/Weapon.gd" id="4_yql5q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wbde1"]
+size = Vector2(32, 32)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_guadj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_b08m3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wbde1")
+
+[node name="ObjectRotator" type="Node2D" parent="."]
+
+[node name="Weapon" type="Sprite2D" parent="ObjectRotator"]
+position = Vector2(30, 0)
+texture = ExtResource("3_7icss")
+script = ExtResource("4_yql5q")
+
+[node name="Cooldown" type="Timer" parent="ObjectRotator/Weapon"]
+wait_time = 0.5
+
+[connection signal="timeout" from="ObjectRotator/Weapon/Cooldown" to="ObjectRotator/Weapon" method="_on_gun_cooldown_timeout"]

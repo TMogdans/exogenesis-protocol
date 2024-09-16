@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=2 format=3 uid="uid://bc5pjt61n34ph"]
+
+[ext_resource type="Script" path="res://Models/Enemy.gd" id="1_bl350"]
+
+[resource]
+script = ExtResource("1_bl350")
+hp = 5
+move_speed = 100
+move_time = 5
+idle_time = 2
+time_threshold = 0.1
+close_combat_damage = 1
+close_combat_cooldown = 3
