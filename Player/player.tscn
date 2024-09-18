@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cj7jb7sgk7vrm"]
+[gd_scene load_steps=7 format=3 uid="uid://cj7jb7sgk7vrm"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_guadj"]
 [ext_resource type="Texture2D" uid="uid://bar7hxkxjjlts" path="res://icon.svg" id="2_b08m3"]
@@ -7,6 +7,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wbde1"]
 size = Vector2(32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ctl7n"]
+radius = 40.0125
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 2
@@ -29,4 +32,20 @@ script = ExtResource("4_yql5q")
 [node name="Cooldown" type="Timer" parent="ObjectRotator/Weapon"]
 wait_time = 0.5
 
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ctl7n")
+
+[node name="Label" type="Label" parent="Area2D"]
+visible = false
+offset_left = -37.0
+offset_top = -67.0
+offset_right = 37.0
+offset_bottom = -44.0
+text = "E interact"
+
 [connection signal="timeout" from="ObjectRotator/Weapon/Cooldown" to="ObjectRotator/Weapon" method="_on_gun_cooldown_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_body_exited"]

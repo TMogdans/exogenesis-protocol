@@ -1,11 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://0r38go8lbday"]
+[gd_scene load_steps=5 format=3 uid="uid://0r38go8lbday"]
 
+[ext_resource type="Script" path="res://Inventory/Item.gd" id="1_pd7le"]
 [ext_resource type="Texture2D" uid="uid://b4gpqlhj4i54f" path="res://Modifications/bounce.png" id="1_v6hgo"]
+[ext_resource type="Script" path="res://Modifications/Bounce.gd" id="3_rtq1q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ou6q"]
 size = Vector2(32, 32)
 
 [node name="ModBounce" type="StaticBody2D"]
+collision_layer = 16
+script = ExtResource("1_pd7le")
+icon = ExtResource("1_v6hgo")
+type = 2
+resource = ExtResource("3_rtq1q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_v6hgo")

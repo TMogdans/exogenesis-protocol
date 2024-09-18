@@ -17,17 +17,19 @@ func _ready() -> void:
 	
 	for item in starter_items:
 		add_item(item)
+		
+	EventBus.item_pickedup.connect(on_give_player_item)
 
-func _process(delta) -> void:
+func _process(_delta) -> void:
 	if Input.is_action_just_pressed("inventory"):
 		toggle_window((!window.visible))
 
 func toggle_window(open: bool) -> void:
-	print_debug("toggle window")
 	window.visible = open
 
 func on_give_player_item(item: Item) -> void:
-	pass
+	print_debug(item)
+	add_item(item)
 
 func add_item(item: Item) -> void:
 	var slot = get_slot_to_add(item)
@@ -59,3 +61,9 @@ func get_slot_to_remove(item: Item) -> InventorySlot:
 			return slot
 	
 	return null
+
+func _on_inventory_mouse_exited() -> void:
+	EventBus.emit_signal("inventory_exited")
+	
+func _on_inventory_mouse_entered() -> void:
+	EventBus.emit_signal("inventory_entered")

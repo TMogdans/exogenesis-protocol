@@ -10,6 +10,7 @@ extends Sprite2D
 var slots = []
 var current_slot_index = 0
 var _can_shoot: bool = true
+var _in_inventory: bool = false
 
 func _ready() -> void:
 	slots = [
@@ -17,6 +18,9 @@ func _ready() -> void:
 		Bullet.new()
 	]
 	cooldownTimer.wait_time = cooldown
+	
+	EventBus.inventory_entered.connect(_on_inventory_entered)
+	EventBus.inventory_exited.connect(_on_inventory_exited)
 	
 func _process(_delta: float) -> void:
 	get_input()
@@ -26,7 +30,7 @@ func get_input():
 		shoot()
 
 func shoot() -> void:
-	if not _can_shoot:
+	if not _can_shoot or _in_inventory:
 		return
 	
 	_can_shoot = false
@@ -66,3 +70,9 @@ func apply_modifiers_to_projectile(modifiers: Array, projectile: Projectile) -> 
 
 func _on_gun_cooldown_timeout():
 	_can_shoot = true
+
+func _on_inventory_entered() -> void:
+	_in_inventory = true
+	
+func _on_inventory_exited() -> void:
+	_in_inventory = false

@@ -20,3 +20,11 @@ func add_item() -> void:
 
 func remove_item() -> void:
 	set_item(null)
+
+
+func _on_mouse_entered() -> void:
+	EventBus.emit_signal("inventory_entered")
+
+
+func _on_mouse_exited() -> void:
+	EventBus.emit_signal("inventory_exited")

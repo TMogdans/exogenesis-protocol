@@ -60,3 +60,6 @@ layout_mode = 2
 
 [node name="InventorySlot12" parent="InventoryWindow/SlotContainer" instance=ExtResource("2_8b4kj")]
 layout_mode = 2
+
+[connection signal="mouse_entered" from="InventoryWindow" to="." method="_on_inventory_mouse_entered"]
+[connection signal="mouse_exited" from="InventoryWindow" to="." method="_on_inventory_mouse_exited"]
