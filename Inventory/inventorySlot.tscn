@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bx06xnd3ctthr"]
+
+[ext_resource type="Script" path="res://Inventory/inventorySlot.gd" id="1_5hg41"]
+[ext_resource type="Texture2D" uid="uid://bar7hxkxjjlts" path="res://icon.svg" id="2_8ldrw"]
+
+[node name="InventorySlot" type="Button"]
+custom_minimum_size = Vector2(64, 64)
+script = ExtResource("1_5hg41")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -31.0
+offset_right = 31.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_8ldrw")
+expand_mode = 1

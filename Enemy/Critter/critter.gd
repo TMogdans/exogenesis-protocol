@@ -30,7 +30,6 @@ func _physics_process(delta: float) -> void:
 
 func take_damage(dmg: float) -> void:
 	current_hp -= dmg
-	print_debug("taking %f damage" % dmg)
 	
 	if current_hp <= 0:
 		queue_free()

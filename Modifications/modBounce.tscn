@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://0r38go8lbday"]
+
+[ext_resource type="Texture2D" uid="uid://b4gpqlhj4i54f" path="res://Modifications/bounce.png" id="1_v6hgo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ou6q"]
+size = Vector2(32, 32)
+
+[node name="ModBounce" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_v6hgo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5ou6q")
