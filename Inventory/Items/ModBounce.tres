@@ -9,3 +9,4 @@ type = 1
 name = "Bouncer"
 description = "BOUNCER_DSCR"
 texture = ExtResource("2_v3sbw")
+scriptPath = "res://Modifications/Bounce.gd"

@@ -3,4 +3,4 @@ extends Modification
 
 func apply(projectile: Projectile) -> void:
 	projectile.can_bounce = true
-	projectile.bounce_count = 3
+	projectile.bounce_count += 3

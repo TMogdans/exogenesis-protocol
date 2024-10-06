@@ -34,6 +34,6 @@ func _on_body_entered(body: Node2D) -> void:
 		print_debug(body.can_interact())
 		selected_item = body.can_interact()
 
-func _on_body_exited(body: Node2D) -> void:
+func _on_body_exited(_body: Node2D) -> void:
 	interact_label.visible = false
 	selected_item = 0

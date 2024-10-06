@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://yfof4d35aqj3"]
+
+[ext_resource type="Script" path="res://Inventory/Items/ItemData.gd" id="1_3vjsc"]
+[ext_resource type="Texture2D" uid="uid://c06tuejtxuvmc" path="res://Modifications/speed.png" id="2_d17av"]
+
+[resource]
+script = ExtResource("1_3vjsc")
+type = 0
+name = "Rapid"
+description = "RAPID_DSCR"
+texture = ExtResource("2_d17av")
+scriptPath = "res://Modifications/Rapid.gd"

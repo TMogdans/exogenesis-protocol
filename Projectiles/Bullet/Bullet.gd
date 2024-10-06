@@ -9,7 +9,7 @@ var can_split: bool = false
 var split_count: int = 0
 var direction = Vector2(1,0)
 var can_damage: int = 1
-const scene: PackedScene = preload("res://Projectiles/Bullet/bullet.tscn")
+const scene: String = "res://Projectiles/Bullet/bullet.tscn"
 
 func set_direction(dir: Vector2) -> void:
 	direction = dir.normalized()
@@ -41,8 +41,6 @@ func _handle_collision(collision, delta) -> void:
 		_handle_split()
 	else:
 		queue_free()
-		
-	
 
 func _handle_bounce(collision, delta) -> void:
 	var collision_normal = collision.get_normal()

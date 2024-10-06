@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://4walns05mm8r"]
+
+[ext_resource type="Script" path="res://Inventory/Items/ItemData.gd" id="1_aglv3"]
+[ext_resource type="Texture2D" uid="uid://c4yle7w2jnsky" path="res://Projectiles/Laser/laser.png" id="2_u3tkl"]
+
+[resource]
+script = ExtResource("1_aglv3")
+type = 2
+name = "Laser"
+description = "LASER_DESCR"
+texture = ExtResource("2_u3tkl")
+scriptPath = "res://Projectiles/Laser/Laser.gd"

@@ -1,5 +1,5 @@
 class_name Modification
 extends Resource
 
-func apply(projectile: Projectile) -> void:
+func apply(_projectile: Projectile) -> void:
 	pass

@@ -5,7 +5,9 @@ var inventorySize: int = 12
 # for testing
 var items = [
 	"res://Inventory/Items/ModBounce.tres",
-	"res://Inventory/Items/ModDamageUp.tres"
+	"res://Inventory/Items/ModDamageUp.tres",
+	"res://Inventory/Items/ProjBullet.tres",
+	"res://Inventory/Items/ProjLaser.tres"
 ]
 
 func _ready() -> void:
@@ -47,3 +49,11 @@ func add_item(slot: int, data: ItemData):
 	var item := InventoryItem.new()
 	item.init(data)
 	%InventoryGrid.get_child(slot).add_child(item)
+
+
+func _on_panel_mouse_entered() -> void:
+	EventBus.emit_signal("inventory_entered")
+
+
+func _on_panel_mouse_exited() -> void:
+	EventBus.emit_signal("inventory_exited")

@@ -7,6 +7,6 @@ func _ready() -> void:
 	%ModGrid.columns = slotCount
 	
 	for i in slotCount:
-		var slot := InventorySlot.new()
-		slot.init(ItemData.Type.MAIN, Vector2(32, 32))
+		var slot := WeaponSlot.new()
+		slot.init(ItemData.Type.MAIN, Vector2(32, 32), i)
 		%ModGrid.add_child(slot)
