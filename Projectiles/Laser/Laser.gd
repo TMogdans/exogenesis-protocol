@@ -17,6 +17,8 @@ func set_direction(dir: Vector2) -> void:
 func _process(delta):
 	var motion = direction * speed * delta
 	
+	rotation = direction.angle()
+	
 	var collision = move_and_collide(motion)
 	
 	if can_damage > 0:
@@ -59,10 +61,10 @@ func _handle_split() -> void:
 	queue_free()
 
 func _create_split_laser(angle: int) -> void:
-	var newLaser = duplicate()
+	var newLaser: CharacterBody2D = duplicate()
 	newLaser.velocity = velocity
 	newLaser.position = position
-	newLaser.scale = Vector2(0.75, 0.75)
+	newLaser.scale = Vector2(0.5, 0.5)
 	newLaser.set_collision_mask_value(3, false)
 	newLaser.set_direction(Vector2(cos(deg_to_rad(angle)), sin(deg_to_rad(angle))))
 	get_parent().add_child(newLaser)
