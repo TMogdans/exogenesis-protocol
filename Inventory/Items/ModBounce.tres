@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dwlpyt5cyak4a"]
+
+[ext_resource type="Script" path="res://Inventory/Items/ItemData.gd" id="1_hcoge"]
+[ext_resource type="Texture2D" uid="uid://b4gpqlhj4i54f" path="res://Modifications/bounce.png" id="2_v3sbw"]
+
+[resource]
+script = ExtResource("1_hcoge")
+type = 1
+name = "Bouncer"
+description = "BOUNCER_DSCR"
+texture = ExtResource("2_v3sbw")

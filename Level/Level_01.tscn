@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://is6wj3v2gssa" path="res://Camera/camera.tscn" id="3_l8mm5"]
 [ext_resource type="PackedScene" uid="uid://snrxqrlwihbj" path="res://Enemy/Critter/critter.tscn" id="4_d1qtb"]
 [ext_resource type="PackedScene" uid="uid://0r38go8lbday" path="res://Modifications/Items/modBounce.tscn" id="4_k5opd"]
-[ext_resource type="PackedScene" uid="uid://bygci63mac1yv" path="res://Inventory/inventory.tscn" id="5_j0y1m"]
+[ext_resource type="PackedScene" uid="uid://boydwnvv1p6yh" path="res://Inventory/inventory.tscn" id="5_j0y1m"]
 
 [node name="Node" type="Node"]
 metadata/_edit_horizontal_guides_ = [643.0]
@@ -44,6 +44,6 @@ limit_right = 1310
 limit_bottom = 880
 TargetNode = NodePath("../CharacterBody2D")
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="GUI" type="CanvasLayer" parent="."]
 
-[node name="Inventory" parent="UI" instance=ExtResource("5_j0y1m")]
+[node name="Inventory" parent="GUI" instance=ExtResource("5_j0y1m")]

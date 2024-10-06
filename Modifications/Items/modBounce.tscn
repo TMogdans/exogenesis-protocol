@@ -1,21 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://0r38go8lbday"]
+[gd_scene load_steps=4 format=3 uid="uid://0r38go8lbday"]
 
-[ext_resource type="Script" path="res://Inventory/Item.gd" id="1_pd7le"]
-[ext_resource type="Texture2D" uid="uid://b4gpqlhj4i54f" path="res://Modifications/bounce.png" id="1_v6hgo"]
-[ext_resource type="Script" path="res://Modifications/Bounce.gd" id="3_rtq1q"]
+[ext_resource type="Script" path="res://Modifications/Items/modBounce.gd" id="1_37ers"]
+[ext_resource type="Resource" uid="uid://dwlpyt5cyak4a" path="res://Inventory/Items/ModBounce.tres" id="2_u2oa4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ou6q"]
 size = Vector2(32, 32)
 
 [node name="ModBounce" type="StaticBody2D"]
 collision_layer = 16
-script = ExtResource("1_pd7le")
-icon = ExtResource("1_v6hgo")
-type = 2
-resource = ExtResource("3_rtq1q")
+script = ExtResource("1_37ers")
+data = ExtResource("2_u2oa4")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_v6hgo")
+[node name="Sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_5ou6q")

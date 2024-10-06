@@ -16,8 +16,7 @@ func get_input():
 	if Input.is_action_just_pressed("interact") and selected_item != 0:
 		var instance = instance_from_id(selected_item)
 		if instance.has_method("pickup"):
-			EventBus.emit_signal("item_pickedup", instance.pickup())
-			instance.queue_free()
+			EventBus.emit_signal("item_pickedup", selected_item)
 		
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed

@@ -1,69 +1,49 @@
-class_name Inventory
 extends Node
 
-var slots: Array[InventorySlot]
-@onready var window: Panel = $InventoryWindow
-@onready var slot_container: GridContainer = $InventoryWindow/SlotContainer
+var inventorySize: int = 12
 
-@export var starter_items: Array[Item]
+# for testing
+var items = [
+	"res://Inventory/Items/ModBounce.tres",
+	"res://Inventory/Items/ModDamageUp.tres"
+]
 
 func _ready() -> void:
-	toggle_window(false)
+	%InventoryGrid.columns = inventorySize
 	
-	for child in slot_container.get_children():
-		slots.append(child)
-		child.set_item(null)
-		child.inventory = self
+	for i in inventorySize:
+		var slot := InventorySlot.new()
+		slot.init(ItemData.Type.MAIN, Vector2(32, 32))
+		%InventoryGrid.add_child(slot)
 	
-	for item in starter_items:
-		add_item(item)
-		
-	EventBus.item_pickedup.connect(on_give_player_item)
+	#for testing
+	for i in items.size():
+		var item := InventoryItem.new()
+		item.init(load(items[i]))
+		%InventoryGrid.get_child(i).add_child(item)
+	
+	EventBus.item_pickedup.connect(_on_item_pickedup)
 
-func _process(_delta) -> void:
+func _process(_delta):
 	if Input.is_action_just_pressed("inventory"):
-		toggle_window((!window.visible))
+		%InventoryGrid.visible = !%InventoryGrid.visible
 
-func toggle_window(open: bool) -> void:
-	window.visible = open
+func _on_item_pickedup(instanceId: int) -> void:
+	var slot = _find_empty_slot()
+	if slot != -1:
+		var instance = instance_from_id(instanceId)
+		if instance.has_method("pickup"):
+			var data = instance.pickup()
+			add_item(slot, data)
+			instance.queue_free()
 
-func on_give_player_item(item: Item) -> void:
-	print_debug(item)
-	add_item(item)
+func _find_empty_slot() -> int:
+	for i in %InventoryGrid.get_child_count():
+		if %InventoryGrid.get_child(i).get_child_count() == 0:
+			return i
+	return -1
 
-func add_item(item: Item) -> void:
-	var slot = get_slot_to_add(item)
-	
-	if slot == null:
-		return
-	
-	if slot.item == null:
-		slot.set_item(item)
-
-func remove_item(item: Item) -> void:
-	var slot = get_slot_to_remove(item)
-	
-	if slot == null or slot.item == item:
-		return
-	
-	slot.remove_item()
-
-func get_slot_to_add(item: Item) -> InventorySlot:
-	for slot in slots:
-		if slot.item == null:
-			return slot
-	
-	return null
-
-func get_slot_to_remove(item: Item) -> InventorySlot:
-	for slot in slots:
-		if slot.item == item:
-			return slot
-	
-	return null
-
-func _on_inventory_mouse_exited() -> void:
-	EventBus.emit_signal("inventory_exited")
-	
-func _on_inventory_mouse_entered() -> void:
-	EventBus.emit_signal("inventory_entered")
+func add_item(slot: int, data: ItemData):
+	var item := InventoryItem.new()
+	item.init(data)
+	%InventoryGrid.get_child(slot).add_child(item)

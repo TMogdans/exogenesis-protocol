@@ -1,30 +1,29 @@
 class_name InventorySlot
-extends Node
+extends PanelContainer
 
-var item: Item
+@export var type: ItemData.Type
 
-@onready var icon: TextureRect = $Icon
-var inventory: Inventory
+func init(itemType: ItemData.Type, minimum_size: Vector2) -> void:
+	type = itemType
+	custom_minimum_size = minimum_size
 
-func set_item(new_item: Item) -> void:
-	item = new_item
-	
-	if item == null:
-		icon.visible = false
-	else:
-		icon.visible = true
-		icon.texture = item.icon
+func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
+	if data is InventoryItem:
+		if type == ItemData.Type.MAIN:
+			if get_child_count() == 0:
+				return true
+			else:
+				if type == data.get_parent().type:
+					return true
+			return get_child(0).data.type == data.data.type
+		else:
+			return data.data.type
+	return false
 
-func add_item() -> void:
-	pass
-
-func remove_item() -> void:
-	set_item(null)
-
-
-func _on_mouse_entered() -> void:
-	EventBus.emit_signal("inventory_entered")
-
-
-func _on_mouse_exited() -> void:
-	EventBus.emit_signal("inventory_exited")
+func _drop_data(at_position: Vector2, data: Variant) -> void:
+	if get_child_count() > 0:
+		var item := get_child(0)
+		if item == data:
+			return
+		item.reparent(data.get_parent())
+	data.reparent(self)

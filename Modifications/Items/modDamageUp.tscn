@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://2n1p8r26bwv2"]
+
+[ext_resource type="Texture2D" uid="uid://b4gpqlhj4i54f" path="res://Modifications/bounce.png" id="1_0662l"]
+[ext_resource type="Script" path="res://Modifications/Bounce.gd" id="2_ht22t"]
+
+[sub_resource type="GDScript" id="GDScript_n2ji4"]
+script/source = "class_name Item
+extends Node
+
+enum TYPE { PROJECTILE, WEAPON_MOD, PROJECTILE_MOD }
+
+@export var icon: Texture2D = null
+@export var type: TYPE
+@export var resource: Resource
+
+
+func can_interact() -> int:
+	return get_instance_id()
+	
+func pickup() -> Item:
+	return self
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ou6q"]
+size = Vector2(32, 32)
+
+[node name="ModBounce" type="StaticBody2D"]
+collision_layer = 16
+script = SubResource("GDScript_n2ji4")
+icon = ExtResource("1_0662l")
+type = 2
+resource = ExtResource("2_ht22t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0662l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5ou6q")

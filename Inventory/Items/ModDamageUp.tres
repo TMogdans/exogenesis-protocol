@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://c5i5soxuk1eqt"]
+
+[ext_resource type="Script" path="res://Inventory/Items/ItemData.gd" id="1_8hy4d"]
+[ext_resource type="Texture2D" uid="uid://c71omj7b20f7p" path="res://Modifications/damage_up.png" id="2_0ms8u"]
+
+[resource]
+script = ExtResource("1_8hy4d")
+type = 1
+name = "Damage Up"
+description = "DAMAGE_UP_DSCR"
+texture = ExtResource("2_0ms8u")

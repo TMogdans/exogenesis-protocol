@@ -1,65 +1,48 @@
-[gd_scene load_steps=3 format=3 uid="uid://bygci63mac1yv"]
+[gd_scene load_steps=4 format=3 uid="uid://boydwnvv1p6yh"]
 
 [ext_resource type="Script" path="res://Inventory/inventory.gd" id="1_lbwm5"]
-[ext_resource type="PackedScene" uid="uid://bx06xnd3ctthr" path="res://Inventory/inventorySlot.tscn" id="2_8b4kj"]
+[ext_resource type="Script" path="res://Inventory/weaponContainer.gd" id="2_aq03s"]
+[ext_resource type="Texture2D" uid="uid://vxrh33mg4cur" path="res://Modifications/32.png" id="2_fi0vm"]
 
 [node name="Inventory" type="Node"]
 script = ExtResource("1_lbwm5")
 
-[node name="InventoryWindow" type="Panel" parent="."]
-offset_right = 821.0
-offset_bottom = 69.0
+[node name="Panel" type="PanelContainer" parent="."]
+offset_right = 36.0
+offset_bottom = 32.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 
-[node name="SlotContainer" type="GridContainer" parent="InventoryWindow"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -165.5
-offset_top = -18.0
-offset_right = 165.5
-offset_bottom = 18.0
-grow_horizontal = 2
-grow_vertical = 2
-columns = 12
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="InventorySlot" parent="InventoryWindow/SlotContainer" instance=ExtResource("2_8b4kj")]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="InventoryGrid" type="GridContainer" parent="Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="InventorySlot2" parent="InventoryWindow/SlotContainer" instance=ExtResource("2_8b4kj")]
+[node name="WeaponContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("2_aq03s")
+
+[node name="Weapon" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/WeaponContainer"]
 layout_mode = 2
 
-[node name="InventorySlot3" parent="InventoryWindow/SlotContainer" instance=ExtResource("2_8b4kj")]
+[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/WeaponContainer/Weapon"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("2_fi0vm")
+stretch_mode = 2
 
-[node name="InventorySlot4" parent="InventoryWindow/SlotContainer" instance=ExtResource("2_8b4kj")]
+[node name="ModGrid" type="GridContainer" parent="Panel/MarginContainer/VBoxContainer/WeaponContainer/Weapon"]
+unique_name_in_owner = true
 layout_mode = 2
-
-[node name="InventorySlot5" parent="InventoryWindow/SlotContainer" instance=ExtResource("2_8b4kj")]
-layout_mode = 2
-
-[node name="InventorySlot6" parent="InventoryWindow/SlotContainer" instance=ExtResource("2_8b4kj")]
-layout_mode = 2
-
-[node name="InventorySlot7" parent="InventoryWindow/SlotContainer" instance=ExtResource("2_8b4kj")]
-layout_mode = 2
-
-[node name="InventorySlot8" parent="InventoryWindow/SlotContainer" instance=ExtResource("2_8b4kj")]
-layout_mode = 2
-
-[node name="InventorySlot9" parent="InventoryWindow/SlotContainer" instance=ExtResource("2_8b4kj")]
-layout_mode = 2
-
-[node name="InventorySlot10" parent="InventoryWindow/SlotContainer" instance=ExtResource("2_8b4kj")]
-layout_mode = 2
-
-[node name="InventorySlot11" parent="InventoryWindow/SlotContainer" instance=ExtResource("2_8b4kj")]
-layout_mode = 2
-
-[node name="InventorySlot12" parent="InventoryWindow/SlotContainer" instance=ExtResource("2_8b4kj")]
-layout_mode = 2
-
-[connection signal="mouse_entered" from="InventoryWindow" to="." method="_on_inventory_mouse_entered"]
-[connection signal="mouse_exited" from="InventoryWindow" to="." method="_on_inventory_mouse_exited"]
