@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://be3xua44v1fjg"]
+[gd_scene load_steps=8 format=4 uid="uid://be3xua44v1fjg"]
 
 [ext_resource type="TileSet" uid="uid://c85snh3g22yof" path="res://Tiles/station_01.tres" id="1_6hhee"]
 [ext_resource type="PackedScene" uid="uid://cj7jb7sgk7vrm" path="res://Player/player.tscn" id="2_avnco"]
 [ext_resource type="PackedScene" uid="uid://is6wj3v2gssa" path="res://Camera/camera.tscn" id="3_l8mm5"]
+[ext_resource type="PackedScene" uid="uid://dnx5ci4yi54pj" path="res://Modifications/Items/modSplit.tscn" id="3_tfr1f"]
 [ext_resource type="PackedScene" uid="uid://snrxqrlwihbj" path="res://Enemy/Critter/critter.tscn" id="4_d1qtb"]
 [ext_resource type="PackedScene" uid="uid://0r38go8lbday" path="res://Modifications/Items/modBounce.tscn" id="4_k5opd"]
 [ext_resource type="PackedScene" uid="uid://boydwnvv1p6yh" path="res://Inventory/inventory.tscn" id="5_j0y1m"]
@@ -22,26 +23,25 @@ tile_set = ExtResource("1_6hhee")
 [node name="ModBounce" parent="Level/Drops" instance=ExtResource("4_k5opd")]
 position = Vector2(1089, 721)
 
+[node name="ModSplit" parent="Level/Drops" instance=ExtResource("3_tfr1f")]
+position = Vector2(897, 773)
+
 [node name="Enemies" type="Node2D" parent="Level"]
 
 [node name="Critter" parent="Level/Enemies" instance=ExtResource("4_d1qtb")]
 position = Vector2(281, 472)
 
 [node name="Critter2" parent="Level/Enemies" instance=ExtResource("4_d1qtb")]
-position = Vector2(828, 468)
+position = Vector2(160, 328)
 
 [node name="Critter3" parent="Level/Enemies" instance=ExtResource("4_d1qtb")]
-position = Vector2(669, 696)
+position = Vector2(250, 606)
 
 [node name="CharacterBody2D" parent="Level" instance=ExtResource("2_avnco")]
 position = Vector2(1042, 820)
 
 [node name="Camera" parent="Level" node_paths=PackedStringArray("TargetNode") instance=ExtResource("3_l8mm5")]
 position = Vector2(881, 563)
-limit_left = 0
-limit_top = 0
-limit_right = 1310
-limit_bottom = 880
 TargetNode = NodePath("../CharacterBody2D")
 
 [node name="GUI" type="CanvasLayer" parent="."]

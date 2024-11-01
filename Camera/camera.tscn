@@ -3,10 +3,6 @@
 [ext_resource type="Script" path="res://Camera/camera.gd" id="1_lxjva"]
 
 [node name="Camera2D" type="Camera2D"]
-limit_left = -160
-limit_top = -260
-limit_right = 1160
-limit_bottom = 640
 limit_smoothed = true
 position_smoothing_enabled = true
 editor_draw_limits = true
