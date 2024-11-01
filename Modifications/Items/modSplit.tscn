@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dnx5ci4yi54pj"]
 
-[ext_resource type="Script" path="res://Modifications/Items/modBounce.gd" id="1_8fn7w"]
+[ext_resource type="Script" path="res://Modifications/Items/pickup.gd" id="1_8fn7w"]
 [ext_resource type="Resource" uid="uid://4wlkbh61rcid" path="res://Inventory/Items/ModSplit.tres" id="2_jrgrj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ou6q"]
